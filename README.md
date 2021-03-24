@@ -99,7 +99,7 @@ RegEX:
   >Cari **region** dengan **profit** paling sedikit
  
   Proses pengerjaan soal 2d dapat dijabarkan sebagai berikut:
-  * Gunakan `-F='\t'` agar dapat membaca file `.tsv` dengan benar
+  * Gunakan `-F'\t'` agar dapat membaca file `.tsv` dengan benar
   * Simpan **profit** tiap **region** ke dalam array, dilakukan dengan menambahkan **profit** yang sesuai ke index array sesuai
     ```bash
     {if (NR != 1){arr[$13]+=$21}}
