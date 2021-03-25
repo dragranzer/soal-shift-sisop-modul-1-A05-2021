@@ -8,3 +8,4 @@ done
 
 fdupes -r ~/Sisop_Prak1/Soal_3 > my_duplicate_files.txt
 fdupes -rdN ~/Sisop_Prak1/Soal_3 > my_duplicate_files.txt
+rm my_duplicate_files.txt
