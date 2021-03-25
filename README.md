@@ -1,11 +1,60 @@
 # soal-shift-sisop-modul-1-A05-2021
 
 ## Soal 1
-
-RegEX:
-```
-(\w*) (\d*) (\d*):(\d*):(\d*) ubuntu.local ticky: (\w*) (.*) \((.*)\)
-```
+* ### Poin 1a
+  RegEx untuk melakukan ekstraksi data jenis log (ERROR/INFO), pesan log, dan username adalah
+  ```
+    (ticky: )([A-Z]*)([^\(]*)\(([a-z]*)
+  ```
+  Penjelasan RegEx:
+  * `(ticky: )` berarti memulai pencarian pada kata "ticky: " di dalam string
+  * `([A-Z]*)` menunjukkan jenis log (ERROR/INFO)
+    `A-Z` menunjukkan karakter yang diperbolehkan dalam jenis log.
+  * `([^\(]*)` menunjukkan pesan log
+    `^\(` berarti pesan log hanya sampai karakter `(`
+* ### Poin 1b
+  Penampilan semua pesan _error_ yang muncul beserta kemunculannya dapat dilakukan dengan cara:
+  1. Membaca file `syslog.log` dari baris ke baris
+  2. Melakukan ekstraksi data menggunakan RegEx yang telah dibuat pada poin (1a)
+      Di dalam proses ekstrak data, data-data hasil prosesnya disimpan di variabel `BASH_REMATCH` yang merupakan _array_.
+      Berikut ini detail isi dari `BASH_REMATCH`
+      - BASH_REMATCH[2] menyimpan data jenis log
+      - BASH_REMATCH[3] menyimpan data pesan log, dan
+      - BASH_REMATCH[4] menyimpan data username
+  4. Melakukan pemilahan antara jenis log ERROR dan jenis log INFO berdasarkan data dari `BASH_REMATCH[2]`. Hal ini dapat dilakukan dengan menggunakan kode percabangan IF, yaitu `if [[ ${BASH_REMATCH[2]} == 'ERROR' ]]`. Dalam proses iterasi baris per-baris dari file `syslog.log` (disimpan pada variabel `$line`), sebuah variable `total` digunakan sebagai _counter_ dari pesan error.
+* ### Poin 1c
+  Penampilan jumlah kemunculan log ERROR dan INFO untuk setiap _user_ dapat dilakukan dengan cara:
+  1. Membaca file `syslog.log` dari baris perbaris
+  2. Melakukan ekstraksi data menggunakan RegEX yang telah dibuat pada poin (1a)
+  3. Mendeklarasikan sebuah array :
+    - `hashmaperror[x]` untuk menyimpan jumlah pesan error yang dimiliki oleh _user_ bernama x. 
+    - `hashmapinfo[x]` untuk menyimpan jumlah pesan info yang dimiliki oleh _user_ bernama x.
+    - `users[x]` untuk menyimpan nama-nama user yang ada di dalam file `syslog.log`.
+    - `users_available[x]` untuk menyimpan data toggle/flag yang bernilai 0 atau 1. Variabel ini akan bernilai 1 ketika nama _user_ bernama x ada di isi array `users[index]`. Kebalikannya, variabel ini akan bernilai 0 ketika nama _user_ bernama x tidak ada di isi array `users[index]`. Tujuan dari pembuatan array ini adalah untuk mempermudah pengecekan nama _user_ dan membuat kompleksitas proses pengecekan _user_ menjadi O(1).
+   4. Iterasi baris perbaris dari isi file `syslog.log` serta melakukan percabangan IF untuk mengecek jenis log dan memasukkanya sesuai dengan jenis log dan username.
+* ### Poin 1d
+    Semua informasi yang didapatkan pada poin (1b) dituliskan ke dalam file `error_message.csv` dengan header `Error,Count` yang kemudian diikuti oleh daftar pesan _error_ danj jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
+    Hal ini bisa dilakukan dengan cara:
+    1. Membaca file `syslog.log` dari baris perbaris
+    2. Melakukan ekstraksi data menggunakan RegEx yang telah dibuat pada poin (1a)
+    3. Dalam proses iterasi baris-perbaris yang disimpan di `$line`, terdapat percabangan IF yang memilah-milah `BASH_REMATCH[3]`. Sebelumnya, terdapat variabel `pd` yang menyimpan jumlah pesan error dengan status _Permission denied_, variabel `fnf` yang menyimpan jumlah pesan error dengan status _File not found_, variabel `ftc` untuk menyimpan jumlah pesan error dengan status _Failed to connect to DB_. Pemilahan berdasarkan `BASH_REMATCH[3]` dilakukan dengan memperhatikan isi dari pesan errornya.
+      - Pesan error `The ticket was modified while updating` statusnya dianggap _Permission denied_ karena sebuah tiket tidak bisa dimodifikasi ketika sedang di _update_. Misalnya tiket adalah sebuah file yang sedang di modifikasi oleh user A. Ketika user B mencoba memodifikasi file tersebut, user B harus menunggu hingga proses modifikasi oleh user A selesai.
+      - Pesan error `Permission denied while closing ticket` statusnya dianggap _Permission denied_ karena dari pesan error sudah jelas bahwa pesan error ini merupakan bagian dari _Permission denied_
+      - Pesan error `Tried to add information to closed ticket` statusnya dianggap _Permission denied_. Misalnya sebuah file sedang di akses oleh user A. User lain tidak dapat memodifikasi / menambahkan sesuatu pada file tersebut.
+      - Pesan error `Ticket doesn't exist` statusnya dianggap _File not found_
+      - Pesan error `Connection to DB failed` statusnya dianggap _Failed to connect to DB_
+      - Pesan error `Timeout while retrieving information` statusnya dianggap _Failed to connect to DB_ karena pada umumnya timeout terjadi ketika koneksi antar client dan server (yang menyimpan informasi) tidak berhasil dilakukan.
+   4. Setelah iterasi baris-baris dilakukan, isi variabel `ftc`, `fnf`, dan `pd` dimasukkan ke dalam file `error_message.csv`. Sebelumnya header `Error,Count` ditulis terlebih dahulu, baru kemudian variabel-variabel tersebut.
+   5. Lakukan sorting berdasarkan isi dari column `Count`.
+* ### Poin 1e
+  Semua informasi yang didapatkan pada poin (1c) dituliskan dalam file `user_statistic.csv` dengan header `Username,INFO,ERROR` diurutkan berdasarkan username secara ascending.
+  Langkah-langkahnya adalah
+  1. Membaca file `syslog.log` baris-perbaris
+  2. Melakukan ekstraksi data dengan menggunakan RegEx
+  3. Di setiap iterasi baris `$line`, lakukan pengisian array `hashmaperror`, `hashmapinfo`, `users`, `users_available` seperti yang telah dijelaskan pada poin (1c)
+  4. Setelah itu, tuliskan header file .csv
+  5. Lalu masukkan data-data berdasarkan isi dari `hasmaperror`, `hashmapinfo`, dan `users`.
+  6. Setelah file user_statistic.csv dibuat, lakukan sorting berdasarkan column pertama dari isi file .csv
 
 ## Soal 2
 * ### 2a
