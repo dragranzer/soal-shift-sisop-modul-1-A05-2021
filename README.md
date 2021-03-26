@@ -43,10 +43,12 @@
 ![image](https://user-images.githubusercontent.com/8071604/112613812-1b840a00-8e53-11eb-9b4a-06d84fa3a727.png)
 
    Semua informasi yang didapatkan pada poin (1b) dituliskan ke dalam file `error_message.csv` dengan header `Error,Count` yang kemudian diikuti oleh daftar pesan _error_ danj jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
-    Hal ini bisa dilakukan dengan cara:
-    1. Membaca file `syslog.log` dari baris perbaris
-    2. Melakukan ekstraksi data menggunakan RegEx yang telah dibuat pada poin (1a)
-    3. Dalam proses iterasi baris-perbaris yang disimpan di `$line`, terdapat percabangan IF yang memilah-milah `BASH_REMATCH[3]`. Sebelumnya, terdapat variabel `pd` yang menyimpan jumlah pesan error dengan status _Permission denied_, variabel `fnf` yang menyimpan jumlah pesan error dengan status _File not found_, variabel `ftc` untuk menyimpan jumlah pesan error dengan status _Failed to connect to DB_. Pemilahan berdasarkan `BASH_REMATCH[3]` dilakukan dengan memperhatikan isi dari pesan errornya.
+   
+   Hal ini bisa dilakukan dengan cara:
+    
+   1. Membaca file `syslog.log` dari baris perbaris
+   2. Melakukan ekstraksi data menggunakan RegEx yang telah dibuat pada poin (1a)
+   3. Dalam proses iterasi baris-perbaris yang disimpan di `$line`, terdapat percabangan IF yang memilah-milah `BASH_REMATCH[3]`. Sebelumnya, terdapat variabel `pd` yang menyimpan jumlah pesan error dengan status _Permission denied_, variabel `fnf` yang menyimpan jumlah pesan error dengan status _File not found_, variabel `ftc` untuk menyimpan jumlah pesan error dengan status _Failed to connect to DB_. Pemilahan berdasarkan `BASH_REMATCH[3]` dilakukan dengan memperhatikan isi dari pesan errornya.
       - Pesan error `The ticket was modified while updating` statusnya dianggap _Permission denied_ karena sebuah tiket tidak bisa dimodifikasi ketika sedang di _update_. Misalnya tiket adalah sebuah file yang sedang di modifikasi oleh user A. Ketika user B mencoba memodifikasi file tersebut, user B harus menunggu hingga proses modifikasi oleh user A selesai.
       - Pesan error `Permission denied while closing ticket` statusnya dianggap _Permission denied_ karena dari pesan error sudah jelas bahwa pesan error ini merupakan bagian dari _Permission denied_
       - Pesan error `Tried to add information to closed ticket` statusnya dianggap _Permission denied_. Misalnya sebuah file sedang di akses oleh user A. User lain tidak dapat memodifikasi / menambahkan sesuatu pada file tersebut.
