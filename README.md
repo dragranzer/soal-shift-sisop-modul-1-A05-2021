@@ -269,3 +269,22 @@
       rm Kelinci_$string.jpg
       ```
    8. jika kondisi1 dan kondisi2 tidak terpenuhi maka gambar yang di download adalah gambar kucing dan proses nya sama persis dengan jika gambar kelinci yang di download hanya berbeda nama
+
+* ### 3d
+   1. Lakukan looping dan jika menemukan folder maka tambahkan nama folder tersebut kedalam array dengan command
+      ```
+      array[$num]=${i%/}
+      ```
+   2. Lakukan zip pada array tersebut dan berikan password untuk mengunci zip file nya dengan command
+      ```
+      zip -P $today -r Koleksi.zip ${array[*]}
+      ```
+* ### 3e
+   1. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder dengan menjalankan script pada `soal3d.sh` dengan command pada `cron3e.tab`
+      ```
+      0 7 * * 1,2,3,4,5 bash ~/Sisop_Prak1/Soal_3/Soal3d.sh;rm -r -- ./*/
+      ```
+   2. Untuk tiap jam 6 malam hari senin-jum’at unzip file serta hapus file zipnya
+      ```
+      0 18 * * 1,2,3,4,5 unzip -P "$(date '+%d%m%Y')" Koleksi.zip;rm Koleksi.zip
+      ```
