@@ -205,9 +205,17 @@
       `mkdir $tanggal`
   2. pindahkan tiap file foto kedalam folder tersebut menggunakan command `mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
   3. pindahkan `Foto.log` kedalam folder dengan command `mv Foto.log $tanggal/Foto.log`
-  4. buat `cron3b.tab` yang isinya `0 20 1,8,15,22,29 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai tanggal 1 dengan         langkah 7 hari tiap jam 8 malam dan `0 20 2,6,10,14,18,22,26,30 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai           tanggal 2 dengan langkah 4 hari tiap jam 8 malam
+  4. buat `cron3b.tab` yang isinya 
+      ```
+      0 20 1,8,15,22,29 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh
+      ``` 
+      untuk mulai tanggal 1 dengan langkah 7 hari tiap jam 8 malam
+      ```
+      0 20 2,6,10,14,18,22,26,30 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh
+      ```
+      untuk mulai tanggal 2 dengan langkah 4 hari tiap jam 8 malam
   
-  * ### 3c
+ * ### 3c
   1. catat date hari ini dan kemarin dalam sebuah string dengan command:
       ```kemarin="$(date -d "yesterday" '+%d-%m-%Y')"```
       ```today="$(date '+%d-%m-%Y')"```
