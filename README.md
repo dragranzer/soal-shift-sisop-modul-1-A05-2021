@@ -162,3 +162,5 @@
 
   Hasil keluaran pada file `hasil.txt`
   ![image](https://user-images.githubusercontent.com/43901559/112338572-7bfb3600-8cf1-11eb-9d66-a72c4870c4d1.png)
+## Soal 3
+* ### 3a
