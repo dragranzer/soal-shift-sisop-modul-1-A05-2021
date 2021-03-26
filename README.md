@@ -245,3 +245,27 @@
       ```
       untuk mengecek apakah tidak terdapat directory dengan nama “Kelinci_$kemarin” pada current directory. 
       Jika kondisi 1 terpenuhi artinya kemarin telah mendownload kucing maka sekarang saat nya mendownload kelinci, jika kondisi 2 terpenuhi artinya kemarin belum mendownload kelinci maka sekarang saat nya mendownload kelinci oleh karena itu kedua kondisi tersebut dihubungkan dengan or.
+   3. jika kondisi diatas terpenuhi maka saat nya mendownload gambar kelinci dengan langkah awal membuat directory atau folder dengan nama `Kelinci_$today`
+      ```
+      temp="Kelinci_$today"
+      mkdir $temp
+      ```
+   4. Declare array sebagai flag yang kemudian akan digunakan untuk menghindari duplikasi
+      ```
+      declare -A array
+      ```
+   5. Download lalu catat hashing dari file tersebut
+      ```
+      wget -cO Kelinci_$string.jpg - https://loremflickr.com/320/240/bunny
+      md5str=($(md5sum Kelinci_$string.jpg))
+      ```
+   6. Jika file tersebut belum ada maka, set nilai array index ke nilai hashing ke 1 dan pindahkan langsung ke directory `$temp`
+      ```
+      array[$md5str]=1
+      mv Kelinci_$string.jpg $temp/Kelinci_$string.jpg
+      ```
+   7. Namun jika file telah terdownload maka hapus file yang baru saja di download
+      ```
+      rm Kelinci_$string.jpg
+      ```
+   8. jika kondisi1 dan kondisi2 tidak terpenuhi maka gambar yang di download adalah gambar kucing dan proses nya sama persis dengan jika gambar kelinci yang di download hanya berbeda nama
