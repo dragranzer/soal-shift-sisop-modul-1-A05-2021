@@ -199,8 +199,8 @@
   4. masukkan nilai hash sebagai key atau index dari array jika nilai dari array dengan key tersebut masih 0
       `array[$md5str]=1` namun jika nilai dari array dengan key tersebut adalah 1 yang artinya file yang sama sudah terdownload maka hapus file yang baru saja di        download dengan cara `rm Koleksi_$string.jpg`
       
- * ### 3b
-    1. Buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
+* ### 3b
+  1. Buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
       `tanggal="$(date '+%d-%m-%Y')"`
       `mkdir $tanggal`
   2. pindahkan tiap file foto kedalam folder tersebut menggunakan command `mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
