@@ -1,6 +1,8 @@
 # soal-shift-sisop-modul-1-A05-2021
 
 ## Soal 1
+![image](https://user-images.githubusercontent.com/8071604/112613476-b9c3a000-8e52-11eb-8912-674d9c93150c.png)
+
 * ### Poin 1a
   RegEx untuk melakukan ekstraksi data jenis log (ERROR/INFO), pesan log, dan username adalah
   ```
