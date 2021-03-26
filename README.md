@@ -288,3 +288,8 @@
       ```
       0 18 * * 1,2,3,4,5 unzip -P "$(date '+%d%m%Y')" Koleksi.zip;rm Koleksi.zip
       ```
+* ### Kesulitan yang dialami
+  Kesulitan yang dialami dalam mengerjakan soal 3 adalah:
+  
+  1. Mendeteksi file duplikat menggunakan hashing dengan chmod
+  2. Mengubah beberapa folder menjadi 1 zip file
