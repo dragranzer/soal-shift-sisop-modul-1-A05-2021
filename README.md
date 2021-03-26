@@ -201,11 +201,19 @@
       
 * ### 3b
   1. Buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
-      `tanggal="$(date '+%d-%m-%Y')"`
-      `mkdir $tanggal`
-  2. pindahkan tiap file foto kedalam folder tersebut menggunakan command `mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
-  3. pindahkan `Foto.log` kedalam folder dengan command `mv Foto.log $tanggal/Foto.log`
-  4. buat `cron3b.tab` yang isinya 
+      ```
+      tanggal="$(date '+%d-%m-%Y')"
+      mkdir $tanggal
+      ```
+  2. pindahkan tiap file foto kedalam folder tersebut menggunakan command 
+      ```
+      mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
+      ```
+  4. pindahkan `Foto.log` kedalam folder
+      ```
+      mv Foto.log $tanggal/Foto.log
+      ```
+  6. buat `cron3b.tab` yang isinya 
       ```
       0 20 1,8,15,22,29 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh
       ``` 
