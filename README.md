@@ -39,6 +39,8 @@
     - `users_available[x]` untuk menyimpan data toggle/flag yang bernilai 0 atau 1. Variabel ini akan bernilai 1 ketika nama _user_ bernama x ada di isi array `users[index]`. Kebalikannya, variabel ini akan bernilai 0 ketika nama _user_ bernama x tidak ada di isi array `users[index]`. Tujuan dari pembuatan array ini adalah untuk mempermudah pengecekan nama _user_ dan membuat kompleksitas proses pengecekan _user_ menjadi O(1).
    4. Iterasi baris perbaris dari isi file `syslog.log` serta melakukan percabangan IF untuk mengecek jenis log dan memasukkanya sesuai dengan jenis log dan username.
 * ### Poin 1d
+![image](https://user-images.githubusercontent.com/8071604/112613812-1b840a00-8e53-11eb-9b4a-06d84fa3a727.png)
+
     Semua informasi yang didapatkan pada poin (1b) dituliskan ke dalam file `error_message.csv` dengan header `Error,Count` yang kemudian diikuti oleh daftar pesan _error_ danj jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
     Hal ini bisa dilakukan dengan cara:
     1. Membaca file `syslog.log` dari baris perbaris
@@ -53,6 +55,8 @@
    4. Setelah iterasi baris-baris dilakukan, isi variabel `ftc`, `fnf`, dan `pd` dimasukkan ke dalam file `error_message.csv`. Sebelumnya header `Error,Count` ditulis terlebih dahulu, baru kemudian variabel-variabel tersebut.
    5. Lakukan sorting berdasarkan isi dari column `Count`.
 * ### Poin 1e
+![image](https://user-images.githubusercontent.com/8071604/112613858-2b9be980-8e53-11eb-8371-4d2550644fdd.png)
+
   Semua informasi yang didapatkan pada poin (1c) dituliskan dalam file `user_statistic.csv` dengan header `Username,INFO,ERROR` diurutkan berdasarkan username secara ascending.
   Langkah-langkahnya adalah
   1. Membaca file `syslog.log` baris-perbaris
