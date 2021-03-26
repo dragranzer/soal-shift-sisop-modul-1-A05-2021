@@ -201,15 +201,15 @@
       
  * ### 3b
   1. buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
-      `tanggal="$(date '+%d-%m-%Y')"`
-      `mkdir $tanggal`
+      ```tanggal="$(date '+%d-%m-%Y')"```
+      ```mkdir $tanggal```
   2. pindahkan tiap file foto kedalam folder tersebut menggunakan command `mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
   3. pindahkan `Foto.log` kedalam folder dengan command `mv Foto.log $tanggal/Foto.log`
   4. buat `cron3b.tab` yang isinya `0 20 1,8,15,22,29 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai tanggal 1 dengan         langkah 7 hari tiap jam 8 malam dan `0 20 2,6,10,14,18,22,26,30 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai           tanggal 2 dengan langkah 4 hari tiap jam 8 malam
   
   * ### 3c
   1. catat date hari ini dan kemarin dalam sebuah string dengan command:
-      `kemarin="$(date -d "yesterday" '+%d-%m-%Y')"`
-      `today="$(date '+%d-%m-%Y')"`
+      ```kemarin="$(date -d "yesterday" '+%d-%m-%Y')"```
+      ```today="$(date '+%d-%m-%Y')"```
   2. kami akan memulai dengan kelinci untuk langkah awal, maka bentuk if saya terdiri dari kondisi1:`[ -d ~/Sisop_Prak1/Soal_3/Kucing_$kemarin ]` untuk mengecek        apakah terdapat directory dengan nama `Kucing_$kemarin` dimana `$kemarin` disini adalah variable yang menyimpan date kemarin pada current directory
      
