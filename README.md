@@ -183,3 +183,7 @@
   ![image](https://user-images.githubusercontent.com/43901559/112338572-7bfb3600-8cf1-11eb-9d66-a72c4870c4d1.png)
 ## Soal 3
 * ### 3a
+  1. Dalam while untuk mengunduh gambar dari  https://loremflickr.com/320/240/kitten dan memberinya nama dengan Koleksi_$string ($string disini dimulai dari 01         sampai jumlah gambar yang diunduh) saya menggunakan comand:
+      '''
+      wget -cO Koleksi_$string.jpg - https://loremflickr.com/320/240/kitten
+      '''
