@@ -183,7 +183,33 @@
   ![image](https://user-images.githubusercontent.com/43901559/112338572-7bfb3600-8cf1-11eb-9d66-a72c4870c4d1.png)
 ## Soal 3
 * ### 3a
-  1. Dalam while untuk mengunduh gambar dari  https://loremflickr.com/320/240/kitten dan memberinya nama dengan Koleksi_$string ($string disini dimulai dari 01         sampai jumlah gambar yang diunduh) saya menggunakan comand:
+  1. Dalam while untuk mengunduh gambar dari `https://loremflickr.com/320/240/kitten` dan memberinya nama dengan `Koleksi_$string` dimana `$string` disini              dimulai dari 01 sampai jumlah gambar yang diunduh saya menggunakan comand:
       ```
       wget -cO Koleksi_$string.jpg - https://loremflickr.com/320/240/kitten
       ```
+  2. catat log kedalam `Foto.log` dengan command:
+      ```
+      exec &>> Foto.log
+      ```
+  3. catat file yang telah di download dengan command:
+      ```
+      md5str=($(md5sum Koleksi_$string.jpg))
+      ```
+      setelah itu didapatkan hash dari file dan disimpan pada variable `md5str`
+  4. masukkan nilai hash sebagai key atau index dari array jika nilai dari array dengan key tersebut masih 0
+      `array[$md5str]=1` namun jika nilai dari array dengan key tersebut adalah 1 yang artinya file yang sama sudah terdownload maka hapus file yang baru saja di        download dengan cara `rm Koleksi_$string.jpg`
+      
+ * ### 3b
+  1. buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
+      `tanggal="$(date '+%d-%m-%Y')"`
+      `mkdir $tanggal`
+  2. pindahkan tiap file foto kedalam folder tersebut menggunakan command `mv Koleksi_$string.jpg $tanggal/Koleksi_$string.jpg` yang di tulis didalam while
+  3. pindahkan `Foto.log` kedalam folder dengan command `mv Foto.log $tanggal/Foto.log`
+  4. buat `cron3b.tab` yang isinya `0 20 1,8,15,22,29 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai tanggal 1 dengan         langkah 7 hari tiap jam 8 malam dan `0 20 2,6,10,14,18,22,26,30 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh` untuk mulai           tanggal 2 dengan langkah 4 hari tiap jam 8 malam
+  
+  * ### 3c
+  1. catat date hari ini dan kemarin dalam sebuah string dengan command:
+      `kemarin="$(date -d "yesterday" '+%d-%m-%Y')"`
+      `today="$(date '+%d-%m-%Y')"`
+  2. kami akan memulai dengan kelinci untuk langkah awal, maka bentuk if saya terdiri dari kondisi1:`[ -d ~/Sisop_Prak1/Soal_3/Kucing_$kemarin ]` untuk mengecek        apakah terdapat directory dengan nama `Kucing_$kemarin` dimana `$kemarin` disini adalah variable yang menyimpan date kemarin pada current directory
+     
