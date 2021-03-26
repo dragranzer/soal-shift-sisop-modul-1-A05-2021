@@ -15,6 +15,8 @@
   * `([^\(]*)` menunjukkan pesan log
     `^\(` berarti pesan log hanya sampai karakter `(`
 * ### Poin 1b
+![image](https://user-images.githubusercontent.com/8071604/112613628-e37cc700-8e52-11eb-97bd-7b040e38aed0.png)
+
   Penampilan semua pesan _error_ yang muncul beserta kemunculannya dapat dilakukan dengan cara:
   1. Membaca file `syslog.log` dari baris ke baris
   2. Melakukan ekstraksi data menggunakan RegEx yang telah dibuat pada poin (1a)
