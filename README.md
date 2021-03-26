@@ -69,6 +69,12 @@
   5. Lalu masukkan data-data berdasarkan isi dari `hasmaperror`, `hashmapinfo`, dan `users`.
   6. Setelah file user_statistic.csv dibuat, lakukan sorting berdasarkan column pertama dari isi file .csv
 
+* ### Kesulitan yang dialami
+  Kesulitan yang dialami dalam mengerjakan soal 1 adalah:
+  
+  1. Membuat RegEX. Saya harus membaca banyak literatur untuk mendapatkan RegEx nya
+  2. Melakukan sorting pada file .csv. Terdapat command `head` dan `tail` yang masih baru bagi saya.
+
 ## Soal 2
 * ### 2a
   >Cari transaksi terakhir dengan profit margin terbesar yang diperoleh melalui: 
