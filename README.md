@@ -233,14 +233,18 @@
       0 20 2,6,10,14,18,22,26,30 * * bash ~/Sisop_Prak1/Soal_3/Soal3a.sh;bash ~/Sisop_Prak1/Soal_3/Soal3b.sh
       ```
       untuk mulai tanggal 2 dengan langkah 4 hari tiap jam 8 malam
-  
+  File yang telah di download sebelumnya dipindahkan pada folder `27-03-2021`
+  ![Screenshot from 2021-03-27 18-43-08](https://user-images.githubusercontent.com/71221969/112720819-46de2600-8f33-11eb-8f55-103a19c25619.png)
+  Isi dari folder `27-03-2021`
+  ![Screenshot from 2021-03-27 18-43-15](https://user-images.githubusercontent.com/71221969/112720842-61b09a80-8f33-11eb-8185-18503f08654c.png)
+
 * ### 3c
-  1. catat date hari ini dan kemarin dalam sebuah string dengan command:
+   1. catat date hari ini dan kemarin dalam sebuah string dengan command:
       ```
       kemarin="$(date -d "yesterday" '+%d-%m-%Y')"
       today="$(date '+%d-%m-%Y')"
       ```
-  2. kami akan memulai dengan kelinci untuk langkah awal, maka bentuk if saya terdiri dari kondisi1:
+   2. kami akan memulai dengan kelinci untuk langkah awal, maka bentuk if saya terdiri dari kondisi1:
       ```
       [ -d ~/Sisop_Prak1/Soal_3/Kucing_$kemarin ]
       ``` 
@@ -274,6 +278,13 @@
       rm Kelinci_$string.jpg
       ```
    8. jika kondisi1 dan kondisi2 tidak terpenuhi maka gambar yang di download adalah gambar kucing dan proses nya sama persis dengan jika gambar kelinci yang di download hanya berbeda nama
+  Output:<br>
+  script telah dijalankan 2x dimana yang pertama akan mengeluarkan folder `Kelinci_26-03-2021` dan yang kedua `Kucing_27-03-2021`
+  ![Screenshot from 2021-03-27 19-37-47](https://user-images.githubusercontent.com/71221969/112720977-1054db00-8f34-11eb-978d-f04682aba3b8.png)
+  isi dari folder `Kelinci_26-03-2021`
+  ![Screenshot from 2021-03-27 19-38-04](https://user-images.githubusercontent.com/71221969/112721105-b7d20d80-8f34-11eb-8e5a-9c1387e4c4b5.png)
+  isi dari folder `Kucing_27-03-2021`
+  ![Screenshot from 2021-03-27 19-38-09](https://user-images.githubusercontent.com/71221969/112721117-c4566600-8f34-11eb-9e88-18a40198ddef.png)
 
 * ### 3d
    1. Lakukan looping dan jika menemukan folder maka tambahkan nama folder tersebut kedalam array dengan command
@@ -284,6 +295,14 @@
       ```
       zip -P $today -r Koleksi.zip ${array[*]}
       ```
+   Output:<br>
+   File `Koleksi.zip` tersedia
+   ![Screenshot from 2021-03-27 19-45-32](https://user-images.githubusercontent.com/71221969/112721509-b6a1e000-8f36-11eb-904a-00f3d9f7b329.png)
+   Ketika menekstrak file `Koleksi.zip` dibutuhkan password
+   ![Screenshot from 2021-03-27 19-57-13](https://user-images.githubusercontent.com/71221969/112721532-e6e97e80-8f36-11eb-95bb-dec8d3788df4.png)
+   Isi file `Koleksi.zip`
+   ![Screenshot from 2021-03-27 19-57-26](https://user-images.githubusercontent.com/71221969/112721543-f7015e00-8f36-11eb-94e4-5fa2da7817da.png)
+
 * ### 3e
    1. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder dengan menjalankan script pada `soal3d.sh` dengan command pada `cron3e.tab`
       ```
