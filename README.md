@@ -206,7 +206,10 @@
       ```
   Output:
   Sebanyak 21 gambar terdownload artinya ada 3 gambar yang sama dan telah dihapus dari 24 gambar
-      ![image](https://user-images.githubusercontent.com/71221969/112719232-7e94a000-8f2a-11eb-9370-a13f1e861cf9.png)
+      ![Screenshot from 2021-03-27 18-43-15](https://user-images.githubusercontent.com/71221969/112719667-92d99c80-8f2c-11eb-96a4-13016273ebe3.png)
+  Tampilan `Foto.log` adalah sebagai berikut:
+      ![Screenshot from 2021-03-27 18-24-28](https://user-images.githubusercontent.com/71221969/112719656-87867100-8f2c-11eb-81a7-07bffe85f919.png)
+
 * ### 3b
   1. Buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
       ```
