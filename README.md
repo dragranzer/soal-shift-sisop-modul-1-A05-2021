@@ -308,10 +308,14 @@
       ```
       0 7 * * 1,2,3,4,5 bash ~/Sisop_Prak1/Soal_3/Soal3d.sh;rm -r -- ./*/
       ```
+      ![Screenshot from 2021-03-27 22-13-11](https://user-images.githubusercontent.com/71221969/112725231-c5de5900-8f49-11eb-8972-f1556f5b2ac8.png)
+
    2. Untuk tiap jam 6 malam hari senin-jum’at unzip file serta hapus file zipnya
       ```
       0 18 * * 1,2,3,4,5 unzip -P "$(date '+%d%m%Y')" Koleksi.zip;rm Koleksi.zip
       ```
+      ![Screenshot from 2021-03-27 22-13-37](https://user-images.githubusercontent.com/71221969/112725240-cd9dfd80-8f49-11eb-95d1-9d51a7ed5fd4.png)
+
 * ### Kesulitan yang dialami
   Kesulitan yang dialami dalam mengerjakan soal 3 adalah:
   
