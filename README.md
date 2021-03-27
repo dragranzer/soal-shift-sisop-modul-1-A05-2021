@@ -206,7 +206,7 @@
       ```
   Output:
   Sebanyak 21 gambar terdownload artinya ada 3 gambar yang sama dan telah dihapus dari 24 gambar
-      ![image](https://github.com/dragranzer/soal-shift-sisop-modul-1-A05-2021/issues/1#issue-842484481)
+      ![image](https://user-images.githubusercontent.com/71221969/112719232-7e94a000-8f2a-11eb-9370-a13f1e861cf9.png)
 * ### 3b
   1. Buat string yang berupa date saat ini dan folder yang akan dipakai untuk menyimpan gambar yang akan dipindah dengan nama folder sesuai dengan tanggal saat         ini dengan command:
       ```
