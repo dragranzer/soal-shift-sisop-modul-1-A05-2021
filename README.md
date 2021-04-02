@@ -28,7 +28,7 @@
    3. Melakukan perhitungan pesan _error_ berdasarkan string _error_-nya
 
 * ### Poin 1c
-![image](https://user-images.githubusercontent.com/8071604/112613743-00b19580-8e53-11eb-8626-e5f5a9bdbef2.png)
+  ![image](https://user-images.githubusercontent.com/8071604/113418197-345e6380-93ef-11eb-84c0-f961ef9b54d4.png)
 
   Penampilan jumlah kemunculan log ERROR dan INFO untuk setiap _user_ dapat dilakukan dengan cara:
   1. Membaca file `syslog.log` dari baris perbaris
