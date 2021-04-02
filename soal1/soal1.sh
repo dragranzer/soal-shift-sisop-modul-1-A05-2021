@@ -3,53 +3,58 @@ filename='syslog.log'
 # (1a) RegEX yang digunakan adalah (ticky: )([A-Z]*)([^\(]*)\(([a-z]*)
 # Hasilnya disimpan di BASH_REMATCH
 echo "(1b)"
-pd=0
-fnf=0
-ftc=0
+declare -A error_count_by_reason
+declare -A error_string
+
+error_string[0]="The ticket was modified while updating"
+error_string[1]="Permission denied while closing ticket"
+error_string[2]="Tried to add information to closed ticket"
+error_string[3]="Ticket doesn't exist"
+error_string[4]="Connection to DB failed"
+error_string[5]="Timeout while retrieving information"
+
 while read line; do
 [[ $line =~ (ticky: )([A-Z]*)([^\(]*)\(([a-z]*) ]] &&
     if [[ ${BASH_REMATCH[2]} == 'ERROR' ]]
     then
-        if [[ ${BASH_REMATCH[3]} == " The ticket was modified while updating " ]] || [[ ${BASH_REMATCH[3]} == ' Permission denied while closing ticket ' ]] || [[ ${BASH_REMATCH[3]} == ' Tried to add information to closed ticket ' ]]
+        if [[ ${BASH_REMATCH[3]} == " The ticket was modified while updating " ]]
         then
-            pd=$((pd+1))
+          error_count_by_reason[0]=$((error_count_by_reason[0]+1))
+        elif [[ ${BASH_REMATCH[3]} == " Permission denied while closing ticket " ]]
+        then
+          error_count_by_reason[1]=$((error_count_by_reason[1]+1))
+        elif [[ ${BASH_REMATCH[3]} == " Tried to add information to closed ticket " ]]
+        then
+          error_count_by_reason[2]=$((error_count_by_reason[2]+1))
         elif [[ ${BASH_REMATCH[3]} == " Ticket doesn't exist " ]]
         then
-            fnf=$((fnf+1))
-        elif [[ ${BASH_REMATCH[3]} == " Connection to DB failed " ]] || [[ ${BASH_REMATCH[3]} == " Timeout while retrieving information " ]]
+          error_count_by_reason[3]=$((error_count_by_reason[3]+1))
+        elif [[ ${BASH_REMATCH[3]} == " Connection to DB failed " ]]
         then
-            ftc=$((ftc+1))
+          error_count_by_reason[4]=$((error_count_by_reason[4]+1))
+        elif [[ ${BASH_REMATCH[3]} == " Timeout while retrieving information " ]]
+        then
+          error_count_by_reason[5]=$((error_count_by_reason[5]+1))
         fi
-        echo ${BASH_REMATCH[3]}
-        total_error=$((total_error+1))
     fi
 done < $filename
-echo "Total ERROR: $total_error"
 
-declare -A data_ekstrak
-data_ekstrak[0]=$pd
-data_ekstrak[1]=$fnf
-data_ekstrak[2]=$ftc
+error_total=0
+for i in {0..5}
+do
+  echo "${error_string[$i]}: ${error_count_by_reason[$i]}"
+  error_total=$((error_total+error_count_by_reason[$i]))
+done
+echo "Total Error: $error_total"
 
-echo "Error,Count" > "error_message2.csv"
-
-for key in ${!data_ekstrak[@]}; do
-    str=''
-    if [[ $key == 0 ]]
-    then
-        str+='Permission denied'
-    elif [[ $key == 1 ]]
-    then
-        str+='File not found'
-    elif [[ $key == 2 ]]
-    then
-        str+='Failed to connect to DB'
-    fi
-    echo "$str,${data_ekstrak[$key]}" >> "error_message2.csv"
+echo "Error,Count" > "error_message_temp.csv"
+for i in {0..5}
+do
+  echo "${error_string[$i]},${error_count_by_reason[$i]}" >> "error_message_temp.csv"
 done
 
-tail -n +2 error_message2.csv | sort -t, -k2 -r -n | cat <(head -1 error_message2.csv) - > error_message.csv
-rm error_message2.csv
+tail -n +2 error_message_temp.csv | sort -t, -k2 -r -n | cat <(head -1 error_message_temp.csv) - > error_message.csv
+rm error_message_temp.csv
 
 # (1c) Menampilkan total ERROR dan INFO untuk setiap username
 echo "(1c)"
