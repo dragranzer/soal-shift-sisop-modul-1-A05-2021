@@ -1,4 +1,5 @@
 #!/bin/bash
+
 today="$(date '+%d%m%Y')"
 declare -A array
 num=0
@@ -11,4 +12,4 @@ do
     num=$((num+1))
 done
 
-zip -P $today -r Koleksi.zip ${array[*]}
+zip -P $today -rm Koleksi.zip ${array[*]}
