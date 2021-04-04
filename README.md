@@ -287,7 +287,7 @@
       ```
    2. Lakukan zip pada array tersebut dan berikan password untuk mengunci zip file nya dengan command
       ```
-      zip -P $today -r Koleksi.zip ${array[*]}
+      zip -P $today -rm Koleksi.zip ${array[*]}
       ```
    Output:<br>
    File `Koleksi.zip` tersedia
