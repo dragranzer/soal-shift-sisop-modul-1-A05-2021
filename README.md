@@ -291,7 +291,7 @@
       ```
    Output:<br>
    File `Koleksi.zip` tersedia
-   ![Screenshot from 2021-03-27 19-45-32](https://user-images.githubusercontent.com/71221969/112721509-b6a1e000-8f36-11eb-904a-00f3d9f7b329.png)
+   ![Screenshot from 2021-04-04 20-22-05](https://user-images.githubusercontent.com/71221969/113510145-8637f280-9583-11eb-868c-048b38335642.png)
    Ketika menekstrak file `Koleksi.zip` dibutuhkan password
    ![Screenshot from 2021-03-27 19-57-13](https://user-images.githubusercontent.com/71221969/112721532-e6e97e80-8f36-11eb-95bb-dec8d3788df4.png)
    Isi file `Koleksi.zip`
