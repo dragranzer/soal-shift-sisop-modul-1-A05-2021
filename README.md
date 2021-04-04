@@ -317,5 +317,5 @@
 * ### Kesulitan yang dialami
   Kesulitan yang dialami dalam mengerjakan soal 3 adalah:
   
-  1. Mendeteksi file duplikat menggunakan hashing dengan chmod
+  1. Mendeteksi file duplikat menggunakan hashing dengan md5
   2. Mengubah beberapa folder menjadi 1 zip file
