@@ -293,9 +293,9 @@
    File `Koleksi.zip` tersedia
    ![Screenshot from 2021-04-04 20-22-05](https://user-images.githubusercontent.com/71221969/113510145-8637f280-9583-11eb-868c-048b38335642.png)
    Ketika menekstrak file `Koleksi.zip` dibutuhkan password
-   ![Screenshot from 2021-03-27 19-57-13](https://user-images.githubusercontent.com/71221969/112721532-e6e97e80-8f36-11eb-95bb-dec8d3788df4.png)
+   ![Screenshot from 2021-04-04 20-23-41](https://user-images.githubusercontent.com/71221969/113510184-c26b5300-9583-11eb-85c9-c2ec7428cabe.png)
    Isi file `Koleksi.zip`
-   ![Screenshot from 2021-03-27 19-57-26](https://user-images.githubusercontent.com/71221969/112721543-f7015e00-8f36-11eb-94e4-5fa2da7817da.png)
+   ![Screenshot from 2021-04-04 20-23-49](https://user-images.githubusercontent.com/71221969/113510188-c9926100-9583-11eb-818f-3d79683e74a1.png)
 
 * ### 3e
    1. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder dengan menjalankan script pada `soal3d.sh` dengan command pada `cron3e.tab`
