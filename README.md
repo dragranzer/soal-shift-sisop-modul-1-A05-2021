@@ -298,7 +298,7 @@
    ![Screenshot from 2021-04-04 20-23-49](https://user-images.githubusercontent.com/71221969/113510188-c9926100-9583-11eb-818f-3d79683e74a1.png)
 
 * ### 3e
-   1. Spesifikasikan Home kedalam directory tertenti terlebih dahulu dengan
+   1. Spesifikasikan Home kedalam directory tertentu terlebih dahulu dengan
       ```
       HOME=/home/ivan/Sisop_Prak1/Soal_3
       ```
