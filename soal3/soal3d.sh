@@ -1,6 +1,6 @@
 #!/bin/bash
 
-today="$(date '+%d%m%Y')"
+today=`date '+%d%m%Y' | awk '{print $0}'`
 declare -A array
 num=0
 for i in *
