@@ -298,15 +298,19 @@
    ![Screenshot from 2021-04-04 20-23-49](https://user-images.githubusercontent.com/71221969/113510188-c9926100-9583-11eb-818f-3d79683e74a1.png)
 
 * ### 3e
-   1. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder dengan menjalankan script pada `soal3d.sh` dengan command pada `cron3e.tab`
+   1. Spesifikasikan Home kedalam directory tertenti terlebih dahulu dengan
       ```
-      0 7 * * 1,2,3,4,5 bash ~/Sisop_Prak1/Soal_3/Soal3d.sh;rm -r -- ./*/
+      HOME=/home/ivan/Sisop_Prak1/Soal_3
+      ```
+   2. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder 
+      ```
+      0 7 * * 1,2,3,4,5 zip -q -P `date +"%m%d%Y"` -rm Koleksi.zip Kucing* Kelinci*
       ```
       ![Screenshot from 2021-03-27 22-13-11](https://user-images.githubusercontent.com/71221969/112725231-c5de5900-8f49-11eb-8972-f1556f5b2ac8.png)
 
-   2. Untuk tiap jam 6 malam hari senin-jum’at unzip file serta hapus file zipnya
+   3. Untuk tiap jam 6 malam hari senin-jum’at unzip file serta hapus file zipnya
       ```
-      0 18 * * 1,2,3,4,5 unzip -P "$(date '+%d%m%Y')" Koleksi.zip;rm Koleksi.zip
+      0 18 * * 1,2,3,4,5 unzip -P "$(date '+%d%m%Y')" Koleksi.zip && rm Koleksi.zip
       ```
       ![Screenshot from 2021-03-27 22-13-37](https://user-images.githubusercontent.com/71221969/112725240-cd9dfd80-8f49-11eb-95d1-9d51a7ed5fd4.png)
 
