@@ -304,7 +304,7 @@
       ```
    2. Untuk tiap jam 7 pagi hari senin-jum’at zip folder dengan password lalu hapus semua folder 
       ```
-      0 7 * * 1,2,3,4,5 zip -q -P `date +"%m%d%Y"` -rm Koleksi.zip Kucing* Kelinci*
+      0 7 * * 1,2,3,4,5 zip -q -P `date +"%d%m%Y"` -rm Koleksi.zip Kucing* Kelinci*
       ```
       ![Screenshot from 2021-03-27 22-13-11](https://user-images.githubusercontent.com/71221969/112725231-c5de5900-8f49-11eb-8972-f1556f5b2ac8.png)
 
